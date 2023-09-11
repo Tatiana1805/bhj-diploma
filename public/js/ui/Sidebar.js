@@ -11,14 +11,22 @@ class Sidebar {
     this.initAuthLinks();
     this.initToggleButton();
   }
-
+ 
   /**
    * Отвечает за скрытие/показа боковой колонки:
    * переключает два класса для body: sidebar-open и sidebar-collapse
    * при нажатии на кнопку .sidebar-toggle
    * */
-  static initToggleButton() {
 
+  static initToggleButton() {
+   let button = document.querySelector('.sidebar-toggle')
+button.addEventListener('click', function(e) {
+  e.preventDefault();
+  let selectButton = document.querySelector('.skin-blue')
+  if (selectButton){
+    selectButton.classList.toggle('sidebar-open')
+  } 
+})
   }
 
   /**
@@ -29,6 +37,13 @@ class Sidebar {
    * выходу устанавливает App.setState( 'init' )
    * */
   static initAuthLinks() {
+    const login = document.querySelector('.menu-item_login')
+    const register = document.querySelector('.menu-item_register')
 
+    let loginModal = App.getModal('login')
+    let registerModal = App.getModal('register')
+
+    login.addEventListener('click', () => loginModal.open())
+    register.addEventListener ('click', () => registerModal.open())
   }
 }

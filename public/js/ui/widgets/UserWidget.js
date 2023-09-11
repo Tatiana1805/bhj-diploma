@@ -12,7 +12,10 @@ class UserWidget {
    * необходимо выкинуть ошибку.
    * */
   constructor(element){
-
+    if (!element){
+      new Error
+    }
+    this.element = element
   }
 
   /**
@@ -23,6 +26,6 @@ class UserWidget {
    * авторизованного пользователя
    * */
   update(){
-
+let user = User.current()
   }
 }
